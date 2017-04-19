@@ -1,0 +1,3 @@
+#Admin user
+admin.login = admin@spryker.com
+admin.password = change123
