@@ -6,9 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 import utils.WebElementFacade;
 
-/**
- * Created by slepkan on 4/20/17
- */
 public class LandingPage extends PageObject {
 
     @FindBy(xpath = ".//*[@id='page-wrapper']/div[1]/nav/ul/li[3]/a")
@@ -22,7 +19,7 @@ public class LandingPage extends PageObject {
         return element(logOutLink);
     }
 
-    public void clickLogOutButton(){
+    public void clickLogOutButton() {
         logOutLink.click();
     }
 }

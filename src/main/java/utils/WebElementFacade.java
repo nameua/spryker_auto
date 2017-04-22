@@ -11,7 +11,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.ui.*;
 import pages.PageObject;
-
+import org.apache.log4j.Logger;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -20,11 +20,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * Created by slepkan on 4/19/17
- */
 public class WebElementFacade implements WrapsElement, WebElement, Locatable{
-//    private static final Logger LOGGER = Logger.getLogger(WebElementFacade.class);
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     private static final int TIME_OUT_IN_SECONDS = 20;
     private static final int WAIT_FOR_ELEMENT_PAUSE_LENGTH = 250;
@@ -203,11 +200,9 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
         return this;
     }
 
-
     public void setWindowFocus() {
         ((JavascriptExecutor) driver).executeScript("window.focus()");
     }
-
 
     public WebElementFacade selectByVisibleText(final String label) {
         waitUntilElementAvailable();
@@ -228,7 +223,6 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
         Select select = new KSelect(getElement(), driver);
         return select.getFirstSelectedOption().getAttribute("value");
     }
-
 
     public WebElementFacade selectByIndex(int indexValue) {
         waitUntilElementAvailable();
@@ -300,7 +294,7 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
     }
 
     private ExpectedCondition<Boolean> elementIsEnabled() {
-//        LOGGER.debug(String.format("Wait till %s element will be enabled on the page %s", this, this.page));
+        logger.debug(String.format("Wait till %s element will be enabled on the page %s", this, this.page));
         return driver1 -> {
             WebElement element = getElement();
             return ((element != null)
@@ -311,7 +305,6 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
     private boolean hasValueAttribute(WebElement webElement) {
         String tag = webElement.getTagName().toLowerCase();
         return HTML_ELEMENTS_WITH_VALUE_ATTRIBUTE.contains(tag);
-
     }
 
     public WebDriverWait waitFor() {
@@ -329,7 +322,6 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
                 .ignoring(NoSuchElementException.class, NoSuchFrameException.class);
     }
 
-
     public WebElementFacade waitUntilNotVisible() {
         waitFor().until(elementIsNotDisplayed());
         return this;
@@ -341,16 +333,13 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
         return getElement().getAttribute("value");
     }
 
-
     public boolean isSelected() {
         return getElement().isSelected();
     }
 
-
     public String getText() {
         return getElement().getText();
     }
-
 
     public WebElementFacade waitUntilEnabled() {
         try {
@@ -553,7 +542,6 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
         return getElement();
     }
 
-
     public Coordinates getCoordinates() {
         return ((Locatable) getElement()).getCoordinates();
     }
@@ -563,7 +551,7 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
             waitFor().until(CustomExpectedConditions.invisibilityOfElement(getElement()));
         } catch (TimeoutException e) {
             if (getElement().isDisplayed()) {
-//                LOGGER.warn("Element " + getElement().toString() + " still visible!!");
+                logger.warn("Element " + getElement().toString() + " still visible!!");
             }
         }
     }
@@ -642,6 +630,4 @@ public class WebElementFacade implements WrapsElement, WebElement, Locatable{
         }
         return value;
     }
-
-
 }

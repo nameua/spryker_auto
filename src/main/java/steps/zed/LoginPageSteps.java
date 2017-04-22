@@ -5,9 +5,6 @@ import org.openqa.selenium.support.PageFactory;
 import pages.zed.LoginPage;
 import steps.BaseStep;
 
-/**
- * Created by slepkan on 4/19/17
- */
 public class LoginPageSteps extends BaseStep<LoginPage>{
 
     public LoginPageSteps(WebDriver webDriver) {

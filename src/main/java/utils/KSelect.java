@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by slepkan on 4/19/17
- */
 public class KSelect extends Select {
 
     private static final By arrow = By.className("selectBox-arrow");

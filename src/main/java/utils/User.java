@@ -1,8 +1,5 @@
 package utils;
 
-/**
- * Created by slepkan on 4/18/17
- */
 public class User {
 
 

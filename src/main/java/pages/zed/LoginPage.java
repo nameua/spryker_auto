@@ -6,10 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.PageObject;
 import utils.WebElementFacade;
 
-
-/**
- * Created by slepkan on 4/18/17
- */
 public class LoginPage extends PageObject {
 
 

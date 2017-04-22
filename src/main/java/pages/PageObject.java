@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-/**
- * Created by slepkan on 4/18/17
- */
 public class PageObject {
 
     private static final long waitForTimeoutInSeconds = 7;

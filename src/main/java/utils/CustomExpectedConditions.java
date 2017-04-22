@@ -1,21 +1,12 @@
 package utils;
 
-import org.apache.commons.lang3.StringUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by slepkan on 4/19/17
- */
 public class CustomExpectedConditions {
 
     public static ExpectedCondition<Boolean> attributeIs(final By locator, final String attribute,
